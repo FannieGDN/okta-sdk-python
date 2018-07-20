@@ -47,7 +47,7 @@ class Utils(object):
                         if attr_type == datetime:
                             val = dateutil.parser.parse(val)
 
-                        elif attr_type == str or attr_type == int or attr_type == dict or attr_type == bool:
+                        elif attr_type == str or attr_type == int or attr_type == dict or attr_type == bool or attr_type == list:
                             pass
 
                         else:
