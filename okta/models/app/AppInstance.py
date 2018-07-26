@@ -83,3 +83,15 @@ class AppInstance:
         app.settings.app.url = url
         app.settings.app.requestIntegration = request_integration
         return app
+
+    @staticmethod
+    def build_basic_auth(url, label, auth_url):
+        app = AppInstance()
+        app.name = 'template_basic_auth'
+        app.label = label
+        app.signOnMode = 'BASIC_AUTH'
+        app.settings = Settings()
+        app.settings.app = AppSettings()
+        app.settings.app.url = url
+        app.settings.app.authURL = auth_url
+        return app
