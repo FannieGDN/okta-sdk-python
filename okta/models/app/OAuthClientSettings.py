@@ -6,7 +6,8 @@ class OAuthClientSettings:
         'redirect_uris': list,
         'response_types': list,
         'grant_types': list,
-        'application_type': str
+        'application_type': str,
+        'issuer_mode': str
     }
 
     def __init__(self):
@@ -22,3 +23,6 @@ class OAuthClientSettings:
         self.grant_types = None
 
         self.application_type = None
+
+        self.issuer_mode = None
+
