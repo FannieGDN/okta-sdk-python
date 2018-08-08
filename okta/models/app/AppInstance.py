@@ -95,3 +95,30 @@ class AppInstance:
         app.settings.app.url = url
         app.settings.app.authURL = auth_url
         return app
+
+    @staticmethod
+    def build_openid_connect(label, logo_uri=None, redirect_uris=None, response_types=None,
+                             grant_types=None, application_type=None, token_endpoint_auth_method=None):
+        if response_types is None:
+            response_types = ['code']
+        if grant_types is None:
+            grant_types = ['authorization_code']
+        if application_type is None:
+            application_type = 'web'
+        if token_endpoint_auth_method is None:
+            token_endpoint_auth_method = 'client_secret_basic'
+        app = AppInstance()
+        app.name = 'oidc_client'
+        app.label = label
+        app.signOnMode = 'OPENID_CONNECT'
+        app.credentials = AppCredentials()
+        app.credentials.oauthClient = OAuthClientCredentials()
+        app.credentials.oauthClient.token_endpoint_auth_method = token_endpoint_auth_method
+        app.settings = Settings()
+        app.settings.oauthClient = OAuthClientSettings()
+        app.settings.oauthClient.logo_uri = logo_uri
+        app.settings.oauthClient.redirect_uris = redirect_uris
+        app.settings.oauthClient.response_types = response_types
+        app.settings.oauthClient.grant_types = grant_types
+        app.settings.oauthClient.application_type = application_type
+        return app
